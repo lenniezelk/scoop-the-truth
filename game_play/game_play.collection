@@ -1,0 +1,14 @@
+name: "game_play"
+scale_along_z: 0
+embedded_instances {
+  id: "go"
+  data: "components {\n"
+  "  id: \"rivemodel\"\n"
+  "  component: \"/game_play/rivemodel.rivemodel\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"gameplay\"\n"
+  "  component: \"/game_play/gameplay.script\"\n"
+  "}\n"
+  ""
+}

@@ -1,0 +1,6 @@
+scene: "/main/poke_the_truth.rivescene"
+default_animation: ""
+material: "/defold-rive/assets/rivemodel.material"
+default_state_machine: "State Machine 1"
+artboard: "Main Menu"
+artboard_alignment: ALIGNMENT_BOTTOM_LEFT

@@ -1,0 +1,4 @@
+scene: "/main/poke_the_truth.rivescene"
+default_animation: ""
+material: "/defold-rive/assets/rivemodel.material"
+artboard: "Settings"

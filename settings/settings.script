@@ -1,0 +1,35 @@
+local screen_size_util = require "main.screen_size_utils"
+
+local MAIN_MENU_CLICKED = "Main Menu Clicked"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.screen_resize = screen_size_util.new()
+	self.screen_resize.center_go_on_screen()
+	self.screen_resize.register_on_resize(self.screen_resize.center_go_on_screen)
+	rive.play_state_machine("#rivemodel", "State Machine 1", nil, rive_event_handler)
+end
+
+function on_input(self, action_id, action)
+	if not action_id or action_id == hash("touch") then
+		if action.pressed then
+			rive.pointer_down("#rivemodel", action.x, action.y)
+		elseif action.released then
+			rive.pointer_up("#rivemodel", action.x, action.y)
+		else
+			rive.pointer_move("#rivemodel", action.x, action.y)
+		end
+	end
+end
+
+function rive_event_handler(self, message_id, message)
+	if message.name == MAIN_MENU_CLICKED then
+		msg.post('.', "show_main_menu")
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show_main_menu") then
+		msg.post("main:/main_menu", "show_main_menu", { proxy_name = "#settingsproxy" })
+	end
+end
