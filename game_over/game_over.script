@@ -1,0 +1,45 @@
+local persist = require('main.persist')
+local questions = require('main.questions')
+local table_length = require('main.table_length')
+
+local EXIT_BTN_CLICKED = "Exit Clicked"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	rive.play_state_machine("#rivemodel", "State Machine 1", nil, rive_event_handler)
+
+	self.persist = persist.new()
+	self.answers = self.persist.load_answers()
+
+	local total_questions = table_length.len(questions.questions)
+	local correct_answers = 0
+
+	for question_index, answer in pairs(self.answers) do
+		if answer == questions.questions[question_index].answer then
+			correct_answers = correct_answers + 1
+		end
+	end
+
+	local label = string.format("%d out of %d", correct_answers, total_questions)
+
+	rive.set_text_run("#rivemodel", "totals", label)
+end
+
+function on_input(self, action_id, action)
+	if not action_id or action_id == hash("touch") then
+		if action.pressed then
+			rive.pointer_down("#rivemodel", action.x, action.y)
+		elseif action.released then
+			rive.pointer_up("#rivemodel", action.x, action.y)
+		else
+			rive.pointer_move("#rivemodel", action.x, action.y)
+		end
+	end
+end
+
+function rive_event_handler(self, message_id, message)
+	if message.name == EXIT_BTN_CLICKED then
+		msg.post("main:/main_menu", "show_main_menu", { proxy_name = "#gameoverproxy" })
+	end
+end

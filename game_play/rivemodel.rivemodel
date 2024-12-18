@@ -3,3 +3,5 @@ default_animation: ""
 material: "/defold-rive/assets/rivemodel.material"
 default_state_machine: "State Machine 1"
 artboard: "Game Play"
+coordinate_system: COORDINATE_SYSTEM_RIVE
+artboard_fit: FIT_CONTAIN

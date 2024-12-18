@@ -2,6 +2,6 @@ scene: "/main/poke_the_truth.rivescene"
 default_animation: ""
 material: "/defold-rive/assets/rivemodel.material"
 default_state_machine: "State Machine 1"
-artboard: "Main Menu"
+artboard: "Insructions"
 coordinate_system: COORDINATE_SYSTEM_RIVE
 artboard_fit: FIT_CONTAIN

@@ -1,14 +1,10 @@
-local screen_size_util = require "main.screen_size_utils"
-
 local PLAY_CLICKED = "Play Clicked"
 local SETTINGS_CLICKED = "Settings Clicked"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("@render:", "clear_color", { color = vmath.vector4(1, 0.90980392, 0.78431373, 1) })
-	self.screen_resize = screen_size_util.new()
-	self.screen_resize.center_go_on_screen()
-	self.screen_resize.register_on_resize(self.screen_resize.center_go_on_screen)
+
 	rive.play_state_machine("#main_menu", "State Machine 1", nil, rive_event_handler)
 end
 
@@ -26,7 +22,7 @@ end
 
 function rive_event_handler(self, message_id, message)
 	if message.name == PLAY_CLICKED then
-		msg.post('.', "load_game_play")
+		msg.post('.', "load_instructions")
 		msg.post('.', "disable")
 	elseif message.name == SETTINGS_CLICKED then
 		msg.post('.', "load_settings")
@@ -43,7 +39,14 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("load_game_play") then
 		msg.post("#gameplayproxy", "load")
 	elseif message_id == hash("show_main_menu") then
-		msg.post(".", "enable")
+		msg.post("main:/main_menu", "enable")
+	elseif message_id == hash("load_instructions") then
+		msg.post("#instructionsproxy", "load")
+	elseif message_id == hash("load_game_over") then
+		msg.post("#gameoverproxy", "load")
+	end
+
+	if message.proxy_name then
 		msg.post(message.proxy_name, "unload")
 	end
 end

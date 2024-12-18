@@ -1,4 +1,3 @@
-local screen_size_util = require "main.screen_size_utils"
 local game_logic = require "game_play.game_logic"
 
 local EXIT_CLICKED = "Exit Btn Clicked"
@@ -7,9 +6,6 @@ local FALSE_BTN_CLICKED = "False Btn Clicked"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	self.screen_resize = screen_size_util.new()
-	self.screen_resize.center_go_on_screen()
-	self.screen_resize.register_on_resize(self.screen_resize.center_go_on_screen)
 
 	rive.play_state_machine("#rivemodel", "State Machine 1", nil, rive_event_handler)
 

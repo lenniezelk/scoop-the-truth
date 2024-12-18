@@ -1,0 +1,14 @@
+name: "instructions"
+scale_along_z: 0
+embedded_instances {
+  id: "go"
+  data: "components {\n"
+  "  id: \"rivemodel\"\n"
+  "  component: \"/instructions/rivemodel.rivemodel\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"instructions\"\n"
+  "  component: \"/instructions/instructions.script\"\n"
+  "}\n"
+  ""
+}

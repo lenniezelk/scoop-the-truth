@@ -1,4 +1,7 @@
 local table_length = require('main.table_length')
+local questions = require('main.questions')
+local persist = require('main.persist')
+
 
 local M = {}
 
@@ -6,7 +9,7 @@ function M.new()
     local response_timer = nil
     local current_fuel = 100
     local previous_fuel = 100
-    local total_questions = table_length.len(questions)
+    local total_questions = table_length.len(questions.questions)
     local current_question = 1
     local answers = {}
     local remaining_response_time = 10 -- seconds
@@ -16,6 +19,7 @@ function M.new()
     local playing = false
 
     local state = {}
+    local persist = persist.new()
 
     function decrease_fuel(delta)
         if (not delta) then
@@ -72,7 +76,7 @@ function M.new()
     end
 
     function get_question()
-        return questions[current_question]
+        return questions.questions[current_question]
     end
 
     function set_question_text()
@@ -96,7 +100,6 @@ function M.new()
         current_question = current_question + 1
 
         if current_question > total_questions or total_fuel == 0 then
-            print("Game Over")
             playing = false
             if response_timer then
                 timer.cancel(response_timer)
@@ -104,6 +107,10 @@ function M.new()
             if fuel_usage_timer then
                 timer.cancel(fuel_usage_timer)
             end
+
+            persist.save_answers(answers)
+
+            msg.post("main:/main_menu", "load_game_over", { proxy_name = "#gameplayproxy" })
         else
             set_question_text()
             start_timer()
@@ -148,58 +155,5 @@ function M.new()
 
     return state
 end
-
-questions = {
-    {
-        index = 1,
-        question = "Answer is True",
-        answer = true,
-    },
-    {
-        index = 2,
-        question = "Answer is False",
-        answer = false,
-    },
-    {
-        index = 3,
-        question = "Answer is True",
-        answer = true,
-    },
-    {
-        index = 4,
-        question = "Answer is False",
-        answer = false,
-    },
-    {
-        index = 5,
-        question = "Answer is True",
-        answer = true,
-    },
-    {
-        index = 6,
-        question = "Answer is False",
-        answer = false,
-    },
-    {
-        index = 7,
-        question = "Answer is True",
-        answer = true,
-    },
-    {
-        index = 8,
-        question = "Answer is False",
-        answer = false,
-    },
-    {
-        index = 9,
-        question = "Answer is True",
-        answer = true,
-    },
-    {
-        index = 10,
-        question = "Answer is False",
-        answer = false,
-    }
-}
 
 return M
