@@ -9,3 +9,5 @@ Thumbs.db
 .project
 .cproject
 builtins
+releases/*
+*.afdesign~lock~

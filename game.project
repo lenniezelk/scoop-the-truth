@@ -1,8 +1,7 @@
 [project]
 title = Poke The Truth
 dependencies#0 = https://github.com/defold/extension-rive/archive/refs/tags/3.6.0.zip
-dependencies#1 = https://github.com/subsoap/defos/archive/refs/tags/v2.8.0.zip
-dependencies#2 = https://github.com/subsoap/defsave/archive/refs/tags/v1.2.6.zip
+dependencies#1 = https://github.com/subsoap/defsave/archive/refs/tags/v1.2.6.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc

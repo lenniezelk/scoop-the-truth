@@ -53,6 +53,9 @@ function M.new()
         end
 
         set_response_countdown_text()
+
+        rive.set_state_machine_input('#rivemodel', 'countdown', (remaining_response_time / total_response_time) * 100,
+            "question countdown")
     end
 
     function start_timer()
@@ -85,7 +88,8 @@ function M.new()
     end
 
     function set_response_countdown_text()
-        rive.set_text_run('#rivemodel', 'response_countdown', string.format("%d", remaining_response_time))
+        rive.set_text_run('#rivemodel', 'question countdown', string.format("%d", remaining_response_time),
+            'question countdown')
     end
 
     state.start = function()
@@ -99,11 +103,13 @@ function M.new()
     function game_over_or_continue()
         current_question = current_question + 1
 
-        if current_question > total_questions or total_fuel == 0 then
+        if current_question > total_questions or current_fuel <= 0 then
             playing = false
+
             if response_timer then
                 timer.cancel(response_timer)
             end
+
             if fuel_usage_timer then
                 timer.cancel(fuel_usage_timer)
             end
@@ -141,7 +147,7 @@ function M.new()
     end
 
     function set_fuel_text()
-        rive.set_text_run('#rivemodel', 'fuel', string.format("%d", current_fuel))
+        rive.set_text_run('#rivemodel', 'fuel level', string.format("%d", current_fuel), "fuel tank")
     end
 
     state.update = function(dt)
@@ -151,6 +157,7 @@ function M.new()
 
         local character_height = vmath.lerp(1, previous_fuel, current_fuel)
         rive.set_state_machine_input('#rivemodel', 'Character Fall', character_height)
+        rive.set_state_machine_input('#rivemodel', 'fuel level', character_height, "fuel tank")
     end
 
     return state

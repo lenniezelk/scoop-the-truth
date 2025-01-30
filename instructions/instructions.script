@@ -4,6 +4,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	rive.play_state_machine("#rivemodel", "State Machine 1", nil, rive_event_handler)
+	rive.set_state_machine_input('#rivemodel', 'luna visible', true, "bg")
 end
 
 function on_input(self, action_id, action)
@@ -20,6 +21,7 @@ end
 
 function rive_event_handler(self, message_id, message)
 	if message.name == START_BTN_CLICKED then
+		sound.play("go#btn-click")
 		msg.post("main:/main_menu", "load_game_play", { proxy_name = "#instructionsproxy" })
 	end
 end

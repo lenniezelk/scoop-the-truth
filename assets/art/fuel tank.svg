@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 480 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="fuel-tank" serif:id="fuel tank" transform="matrix(1,0,0,1,940,50)">
+        <rect x="-940" y="-50" width="480" height="480" style="fill:none;"/>
+        <g transform="matrix(1.11486,0,0,1.11486,-995.439,-127.736)">
+            <circle cx="265" cy="285" r="185" style="fill:rgb(144,171,189);"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-970,-80)">
+            <circle cx="270" cy="270" r="190" style="fill:rgb(238,240,245);"/>
+            <clipPath id="_clip1">
+                <circle cx="270" cy="270" r="190"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1,0,0,1,92.963,35.0461)">
+                    <path d="M0,260C2.867,241.363 26.667,220 40,220C53.333,220 91.289,257.661 110,260C136.667,263.333 160,222.5 190,220C210,218.333 250.132,262.838 270,260C293.333,256.667 316.667,207.5 340,210C363.333,212.5 390,260 410,260C430,260 471.786,197.41 480,220C493.333,256.667 480,644.954 480,644.954L0,644.954C0,644.954 -6.667,303.333 0,260Z" style="fill:rgb(255,96,207);"/>
+                </g>
+                <g transform="matrix(1,0,0,1,30,30)">
+                    <path d="M0,260C2.867,241.363 26.667,220 40,220C53.333,220 91.289,257.661 110,260C136.667,263.333 160,222.5 190,220C210,218.333 250.132,262.838 270,260C293.333,256.667 316.667,207.5 340,210C363.333,212.5 390,260 410,260C430,260 471.786,197.41 480,220C493.333,256.667 480,650 480,650L0,650C0,650 -6.667,303.333 0,260Z" style="fill:rgb(248,60,182);"/>
+                </g>
+            </g>
+        </g>
+        <g id="bubblew">
+            <g transform="matrix(1,0,0,1,-940,-50)">
+                <circle cx="335" cy="285" r="15" style="fill:rgb(213,23,130);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-940,-50)">
+                <circle cx="170" cy="300" r="10" style="fill:rgb(255,96,207);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-790,30)">
+                <circle cx="170" cy="300" r="10" style="fill:rgb(255,96,207);"/>
+            </g>
+            <g transform="matrix(0.5,0,0,0.5,-880,165)">
+                <circle cx="170" cy="300" r="10" style="fill:rgb(255,96,207);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-940,-50)">
+                <circle cx="235.741" cy="315.741" r="5.741" style="fill:rgb(255,96,207);"/>
+            </g>
+        </g>
+    </g>
+</svg>

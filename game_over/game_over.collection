@@ -10,5 +10,11 @@ embedded_instances {
   "  id: \"rivemodel\"\n"
   "  component: \"/game_over/game_over.rivemodel\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"btnclick\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/audio/btn-click.wav\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }

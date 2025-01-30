@@ -8,6 +8,8 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	rive.play_state_machine("#rivemodel", "State Machine 1", nil, rive_event_handler)
+	rive.set_state_machine_input('#rivemodel', 'luna visible', false, "bg")
+
 
 	self.logic = game_logic.new()
 	self.logic.start()
@@ -34,16 +36,13 @@ end
 
 function rive_event_handler(self, message_id, message)
 	if message.name == EXIT_CLICKED then
-		msg.post('.', "show_main_menu")
+		sound.play("go#exit-btn-click")
+		msg.post("main:/main_menu", "show_main_menu", { proxy_name = "#gameplayproxy" })
 	elseif message.name == TRUE_BTN_CLICKED then
+		sound.play("go#answer_button_click")
 		self.logic.answer(true)
 	elseif message.name == FALSE_BTN_CLICKED then
+		sound.play("go#answer_button_click")
 		self.logic.answer(false)
-	end
-end
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("show_main_menu") then
-		msg.post("main:/main_menu", "show_main_menu", { proxy_name = "#gameplayproxy" })
 	end
 end

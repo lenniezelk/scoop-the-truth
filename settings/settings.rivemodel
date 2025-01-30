@@ -1,6 +1,0 @@
-scene: "/main/poke_the_truth.rivescene"
-default_animation: ""
-material: "/defold-rive/assets/rivemodel.material"
-artboard: "Settings"
-coordinate_system: COORDINATE_SYSTEM_RIVE
-artboard_fit: FIT_CONTAIN

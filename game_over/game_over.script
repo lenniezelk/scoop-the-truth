@@ -8,6 +8,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	rive.play_state_machine("#rivemodel", "State Machine 1", nil, rive_event_handler)
+	rive.set_state_machine_input('#rivemodel', 'luna visible', true, "bg")
 
 	self.persist = persist.new()
 	self.answers = self.persist.load_answers()
@@ -40,6 +41,7 @@ end
 
 function rive_event_handler(self, message_id, message)
 	if message.name == EXIT_BTN_CLICKED then
+		sound.play("#btnclick")
 		msg.post("main:/main_menu", "show_main_menu", { proxy_name = "#gameoverproxy" })
 	end
 end

@@ -10,5 +10,11 @@ embedded_instances {
   "  id: \"instructions\"\n"
   "  component: \"/instructions/instructions.script\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"btn-click\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/audio/btn-click.wav\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }

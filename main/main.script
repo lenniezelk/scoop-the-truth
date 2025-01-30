@@ -1,11 +1,13 @@
 local PLAY_CLICKED = "Play Clicked"
-local SETTINGS_CLICKED = "Settings Clicked"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("@render:", "clear_color", { color = vmath.vector4(1, 0.90980392, 0.78431373, 1) })
 
 	rive.play_state_machine("#main_menu", "State Machine 1", nil, rive_event_handler)
+	rive.set_state_machine_input('#main_menu', 'luna visible', true, "bg")
+
+	sound.play("main_menu#bg-music")
 end
 
 function on_input(self, action_id, action)
@@ -22,10 +24,8 @@ end
 
 function rive_event_handler(self, message_id, message)
 	if message.name == PLAY_CLICKED then
+		sound.play("main_menu#btn-click")
 		msg.post('.', "load_instructions")
-		msg.post('.', "disable")
-	elseif message.name == SETTINGS_CLICKED then
-		msg.post('.', "load_settings")
 		msg.post('.', "disable")
 	end
 end
@@ -34,8 +34,6 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
-	elseif message_id == hash("load_settings") then
-		msg.post("#settingsproxy", "load")
 	elseif message_id == hash("load_game_play") then
 		msg.post("#gameplayproxy", "load")
 	elseif message_id == hash("show_main_menu") then
